@@ -1,0 +1,22 @@
+version: '3.3'
+services:
+  redis:
+    image: redis
+    volumes:
+      - ./redis/data/redis:/data
+      - ./redis/config/redis.conf:/redis.conf
+    command: redis-server /redis.conf
+  
+  api:
+    build: ./api
+    ports:
+      - 8081:8080
+    env_file:
+      - .env
+    depends_on:
+      - redis
+  
+  app:
+    build: ./app-counter
+    ports:
+      - 80:80
