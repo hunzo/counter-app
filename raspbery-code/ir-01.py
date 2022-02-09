@@ -29,7 +29,7 @@ DELAY = 1
 
 def CallApi():
     print('Call Api Counter')
-    r = requests.get('http://hcloud.nida.ac.th:8082/api/inc?key=123456')
+    r = requests.get('http://your_domain_server:8082/api/inc?key=123456')
     print(r.json())
 
 def OpenRelay():
